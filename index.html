@@ -9,27 +9,26 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     }
 
     :root {
-      --bg-main: #1e2030;
-      --bg-dark: #1a1b2c;
-      --bg-card: #25273f;
-      --bg-card-darker: #212238;
-      --accent-primary: #00bfff;
-      --accent-blue: #00a8ff;
+      --bg-page: #1a1b2c;
+      --bg-sidebar: #1e1f32;
+      --bg-card: #252742;
+      --bg-card-hover: #2a2c4c;
       --accent-orange: #ff9f1c;
-      --accent-red: #dc3545;
-      --accent-green: #28a745;
+      --accent-blue: #00b0ff;
       --text-white: #ffffff;
-      --text-light: #e0e0ff;
-      --text-muted: #9495b8;
-      --border-subtle: #333552;
+      --text-light: #d0d0f0;
+      --text-muted: #888ab8;
+      --text-green: #2ecc71;
+      --border-subtle: #33355a;
+      --sidebar-width: 240px;
     }
 
     body {
-      background-color: var(--bg-main);
+      background-color: var(--bg-page);
       color: var(--text-white);
       display: flex;
       min-height: 100vh;
@@ -38,56 +37,68 @@
 
     /* ———— SIDEBAR ———— */
     .sidebar {
-      width: 270px;
-      background-color: var(--bg-dark);
-      padding: 24px 16px;
+      width: var(--sidebar-width);
+      background-color: var(--bg-sidebar);
+      padding: 24px 12px;
       display: flex;
       flex-direction: column;
+      gap: 20px;
       border-right: 1px solid var(--border-subtle);
     }
 
     .sidebar-top-buttons {
       display: flex;
+      flex-direction: column;
       gap: 10px;
-      margin-bottom: 24px;
     }
 
     .btn-play {
-      flex: 1;
       background: linear-gradient(180deg, #ffb32c 0%, #e68a00 100%);
       border: none;
       border-radius: 6px;
-      padding: 12px 8px;
+      padding: 12px;
       color: white;
       font-weight: 700;
       font-size: 14px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
     .btn-discord {
-      flex: 1;
-      background-color: #2563eb;
+      background-color: #2584eb;
       border: none;
       border-radius: 6px;
-      padding: 12px 8px;
+      padding: 12px;
       color: white;
       font-weight: 700;
       font-size: 14px;
       cursor: pointer;
       text-decoration: none;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
     .logo-wrapper {
       text-align: center;
-      margin-bottom: 28px;
+      padding: 10px 0;
     }
 
     .logo-img {
-      width: 140px;
-      height: 140px;
+      width: 120px;
+      height: 120px;
       object-fit: contain;
       margin-bottom: 8px;
+    }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent-blue);
     }
 
     .sidebar-nav {
@@ -100,37 +111,25 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 12px 16px;
+      padding: 10px 14px;
       border-radius: 6px;
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 15px;
+      font-size: 14px;
       transition: all 0.15s ease;
     }
 
     .nav-link.active {
-      background-color: rgba(0, 191, 255, 0.12);
-      color: var(--accent-primary);
-      border-left: 2px solid var(--accent-primary);
+      background-color: rgba(0, 176, 255, 0.15);
+      color: var(--accent-blue);
     }
 
     .nav-link:hover {
-      color: var(--accent-primary);
+      color: var(--accent-blue);
     }
 
-    .sidebar-bottom {
+    .sidebar-bottom-spacer {
       margin-top: auto;
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .sidebar-bottom a {
-      color: var(--text-muted);
-      font-size: 20px;
-      text-decoration: none;
     }
 
     /* ———— MAIN CONTENT ———— */
@@ -140,61 +139,108 @@
       overflow-y: auto;
     }
 
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 24px;
-    }
-
-    .signin-box {
+    .top-signin-bar {
       background-color: var(--bg-card);
-      border-radius: 6px;
-      padding: 10px 16px;
-      display: flex;
+      border-radius: 8px;
+      padding: 10px 18px;
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      margin-bottom: 24px;
       border: 1px solid var(--border-subtle);
     }
 
     .signin-label {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .signin-action {
       font-size: 14px;
       font-weight: 600;
       color: var(--text-white);
-    }
-
-    .cart-button {
-      background-color: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 6px;
-      padding: 10px 16px;
-      color: var(--text-white);
-      font-weight: 600;
+      cursor: pointer;
       display: flex;
       align-items: center;
       gap: 6px;
-      cursor: pointer;
     }
 
-    .user-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: var(--bg-card);
-      border-radius: 6px;
-      padding: 12px 16px;
+    .page-header {
       margin-bottom: 24px;
-      border: 1px solid var(--border-subtle);
     }
 
-    .username-display {
+    .page-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .page-subtitle {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .bgrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+
+    .bcard {
+      background-color: var(--bg-card);
+      border-radius: 8px;
+      padding: 20px;
+      border: 1px solid var(--border-subtle);
+      transition: transform 0.15s ease;
+    }
+
+    .bcard:hover {
+      transform: translateY(-2px);
+      background-color: var(--bg-card-hover);
+    }
+
+    .bcard-title {
       font-weight: 700;
       font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .bcard-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    .bcard-price {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-green);
+      margin-bottom: 14px;
+    }
+
+    .btn-purchase {
+      width: 100%;
+      background-color: var(--accent-blue);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background-color 0.15s ease;
+    }
+
+    .btn-purchase:hover {
+      background-color: #0099e6;
     }
 
     .welcome-card {
@@ -217,6 +263,11 @@
       font-size: 14px;
     }
 
+    .welcome-card a {
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+
     .policy-row {
       display: flex;
       gap: 14px;
@@ -225,7 +276,7 @@
 
     .btn-terms {
       background-color: rgba(220, 53, 69, 0.15);
-      border: 1px solid var(--accent-red);
+      border: 1px solid #dc3545;
       color: #ff6b6b;
       border-radius: 6px;
       padding: 12px 24px;
@@ -237,9 +288,9 @@
     }
 
     .btn-privacy {
-      background-color: rgba(0, 191, 255, 0.15);
-      border: 1px solid var(--accent-primary);
-      color: var(--accent-primary);
+      background-color: rgba(0, 176, 255, 0.15);
+      border: 1px solid var(--accent-blue);
+      color: var(--accent-blue);
       border-radius: 6px;
       padding: 12px 24px;
       font-weight: 700;
@@ -249,17 +300,10 @@
       font-size: 14px;
     }
 
-    .category-heading {
-      font-size: 20px;
-      margin-bottom: 18px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 20px;
+      gap: 18px;
     }
 
     .product-card {
@@ -267,18 +311,13 @@
       border-radius: 8px;
       overflow: hidden;
       border: 1px solid var(--border-subtle);
-      transition: transform 0.1s ease;
-    }
-
-    .product-card:hover {
-      transform: translateY(-2px);
     }
 
     .product-image {
       width: 100%;
-      height: 160px;
+      height: 140px;
       object-fit: cover;
-      background-color: var(--bg-dark);
+      background-color: var(--bg-sidebar);
     }
 
     .product-body {
@@ -294,57 +333,8 @@
     .product-price {
       font-size: 18px;
       font-weight: 700;
-      color: var(--accent-green);
+      color: var(--text-green);
       margin-bottom: 12px;
-    }
-
-    .product-price strike {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-left: 6px;
-      font-weight: 400;
-    }
-
-    .btn-purchase {
-      width: 100%;
-      background-color: var(--accent-primary);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      padding: 10px;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    .btn-purchase:hover {
-      background-color: #00a8e6;
-    }
-
-    .bars-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .bars-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 6px;
-      padding: 14px 20px;
-    }
-
-    .bars-name {
-      font-weight: 700;
-      font-size: 15px;
-    }
-
-    .bars-price {
-      color: var(--accent-green);
-      font-weight: 700;
     }
 
     .hidden-page {
@@ -355,31 +345,9 @@
       display: block;
     }
 
-    .legal-content {
-      background-color: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 28px;
-      max-height: 75vh;
-      overflow-y: auto;
-      font-size: 14px;
-      line-height: 1.7;
-      color: #d0d0e8;
-    }
-
-    .legal-content h2 {
-      margin-bottom: 20px;
-      color: white;
-      font-size: 20px;
-    }
-
-    .legal-content p {
-      margin-bottom: 14px;
-    }
-
     /* ———— SIGN IN PAGE ———— */
     .signin-container {
-      max-width: 500px;
+      max-width: 420px;
       margin-top: 40px;
     }
 
@@ -392,7 +360,7 @@
 
     .signin-card h2 {
       margin-bottom: 8px;
-      font-size: 22px;
+      font-size: 20px;
     }
 
     .signin-card p {
@@ -413,74 +381,28 @@
       cursor: pointer;
     }
 
-    /* ———— CONFIRMATION MODAL ———— */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background-color: rgba(0,0,0,0.8);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 20px;
-    }
-
-    .modal-overlay.visible {
-      display: flex;
-    }
-
-    .modal-box {
+    .legal-content {
       background-color: var(--bg-card);
-      border: 1px solid var(--accent-primary);
+      border: 1px solid var(--border-subtle);
       border-radius: 8px;
       padding: 28px;
-      max-width: 520px;
-      width: 100%;
-    }
-
-    .modal-box h3 {
-      font-size: 20px;
-      margin-bottom: 16px;
-    }
-
-    .modal-box p {
-      color: var(--text-light);
-      margin-bottom: 24px;
+      font-size: 14px;
       line-height: 1.7;
+      color: var(--text-light);
     }
 
-    .modal-buttons {
-      display: flex;
-      gap: 12px;
-    }
-
-    .modal-btn-no {
-      flex: 1;
-      background-color: #444466;
+    .legal-content h2 {
+      margin-bottom: 20px;
       color: white;
-      border: none;
-      border-radius: 6px;
-      padding: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: 15px;
+      font-size: 20px;
     }
 
-    .modal-btn-yes {
-      flex: 1;
-      background-color: var(--accent-green);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      padding: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: 15px;
+    .legal-content p {
+      margin-bottom: 14px;
     }
 
-    /* ———— FOOTER ———— */
     .page-footer {
-      margin-top: 40px;
+      margin-top: 60px;
       padding-top: 20px;
       border-top: 1px solid var(--border-subtle);
       display: flex;
@@ -499,7 +421,7 @@
     }
 
     .page-footer a:hover {
-      color: var(--accent-primary);
+      color: var(--accent-blue);
     }
   </style>
 </head>
@@ -513,8 +435,7 @@
   </div>
 
   <div class="logo-wrapper">
-    <!-- Replace with your logo -->
-    <img src="https://media.discordapp.net/attachments/1527727656160854273/1550938270328954900/union_estate_rp_transparent.png?ex=6aba0a92&is=6ab8b912&hm=31b92ddb86244c672b48da196f230e8c29b0457f8778c1c69ec2a72d65352c06&=&format=webp&quality=lossless&width=1024&height=1024" alt="Union Estate RP" class="logo-img">
+    <div class="logo-text">Union Estate RP</div>
   </div>
 
   <nav class="sidebar-nav">
@@ -525,10 +446,7 @@
     <a href="#misc" data-page="misc" class="nav-link">📦 Miscellaneous</a>
   </nav>
 
-  <div class="sidebar-bottom">
-    <a href="https://discord.gg/2B2sMSwJqy" target="_blank">💬</a>
-    <a href="http://www.youtube.com/@unionestaterp" target="_blank">▶</a>
-  </div>
+  <div class="sidebar-bottom-spacer"></div>
 </aside>
 
 <!-- ———— MAIN CONTENT ———— -->
@@ -536,230 +454,185 @@
 
   <!-- HOME PAGE -->
   <div class="hidden-page active" id="page-home">
-    <div class="top-bar">
-      <div class="signin-box" id="signinArea">
-        <div>
-          <div class="signin-label">SIGN IN</div>
-          <div class="signin-action" id="signinTrigger" style="cursor:pointer;">Connect Your Account ↗</div>
-        </div>
+    <div class="top-signin-bar">
+      <div>
+        <div class="signin-label">Sign In</div>
+        <div class="signin-action" id="signinTrigger">Connect Your Account ↗</div>
       </div>
-      <button class="cart-button">🛒 EMPTY</button>
     </div>
 
     <div class="welcome-card">
       <h1>Welcome to Union Estate RP Store</h1>
-      <p>Welcome to our store! For all purchases, please ensure you're in our Discord to receive your roles and items. All purchases are final — we do not offer refunds or exchanges.</p>
+      <p>Welcome! For all purchases, please ensure you're in our <a href="https://discord.gg/2B2sMSwJqy" target="_blank">Discord</a> to receive your roles and items.<br>All purchases are final — we do not offer refunds or exchanges.</p>
       <div class="policy-row">
         <a href="#terms" data-page="terms" class="btn-terms">📜 Terms & Conditions</a>
         <a href="#privacy" data-page="privacy" class="btn-privacy">🔒 Privacy Policy</a>
       </div>
     </div>
+
+    <div class="page-footer">
+      <p>© 2026 Union Estate RP. Powered by Tebex. Not affiliated with Rockstar Games or Cfx.re.</p>
+      <div>
+        <a href="#terms" data-page="terms">Terms & Conditions</a>
+        <a href="#privacy" data-page="privacy">Privacy Policy</a>
+        <a href="https://discord.gg/2B2sMSwJqy" target="_blank">Discord</a>
+        <a href="http://www.youtube.com/@unionestaterp" target="_blank">YouTube</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BARS BUNDLES PAGE -->
+  <div class="hidden-page" id="page-bars">
+    <div class="top-signin-bar">
+      <div>
+        <div class="signin-label">Sign In</div>
+        <div class="signin-action">Connect Your Account ↗</div>
+      </div>
+    </div>
+
+    <div class="page-header">
+      <h1 class="page-title">Bars Bundles</h1>
+      <p class="page-subtitle">Purchase Bars to unlock exclusive in-game items and perks.</p>
+    </div>
+
+    <div class="bgrid">
+      <div class="bcard">
+        <h3 class="bcard-title">[200] Bars Bundle</h3>
+        <p class="bcard-desc">200 Bars — redeem for exclusive in-game items</p>
+        <div class="bcard-price">£23.99</div>
+        <button class="btn-purchase" data-link="https://paypal.me/haydentaylor129">+ Purchase</button>
+      </div>
+
+      <div class="bcard">
+        <h3 class="bcard-title">[750] Bars Bundle</h3>
+        <p class="bcard-desc">750 Bars — best value mid-tier bundle</p>
+        <div class="bcard-price">£89.99</div>
+        <button class="btn-purchase" data-link="https://paypal.me/haydentaylor129">+ Purchase</button>
+      </div>
+
+      <div class="bcard">
+        <h3 class="bcard-title">[1000] Bars Bundle</h3>
+        <p class="bcard-desc">1000 Bars — premium bundle with bonus items</p>
+        <div class="bcard-price">£119.99</div>
+        <button class="btn-purchase" data-link="https://paypal.me/haydentaylor129">+ Purchase</button>
+      </div>
+
+      <div class="bcard">
+        <h3 class="bcard-title">[1500] Bars Bundle</h3>
+        <p class="bcard-desc">1500 Bars — largest bundle, exclusive perks</p>
+        <div class="bcard-price">£179.99</div>
+        <button class="btn-purchase" data-link="https://paypal.me/haydentaylor129">+ Purchase</button>
+      </div>
+
+      <div class="bcard">
+        <h3 class="bcard-title">[2000] Bars Bundle</h3>
+        <p class="bcard-desc">2000 Bars — ultimate supporter package</p>
+        <div class="bcard-price">£239.99</div>
+        <button class="btn-purchase" data-link="https://paypal.me/haydentaylor129">+ Purchase</button>
+      </div>
+
+      <div class="bcard">
+        <h3 class="bcard-title">[3500] Bars Bundle</h3>
+        <p class="bcard-desc">3500 Bars — lifetime supporter tier</p>
+        <div class="bcard-price">£419.99</div>
+        <button class="btn-purchase" data-link="https://paypal.me/haydentaylor129">+ Purchase</button>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <p>© 2026 Union Estate RP. Powered by Tebex. Not affiliated with Rockstar Games or Cfx.re.</p>
+      <div>
+        <a href="#terms" data-page="terms">Terms & Conditions</a>
+        <a href="#privacy" data-page="privacy">Privacy Policy</a>
+        <a href="https://discord.gg/2B2sMSwJqy" target="_blank">Discord</a>
+        <a href="http://www.youtube.com/@unionestaterp" target="_blank">YouTube</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERKS PAGE -->
+  <div class="hidden-page" id="page-perks">
+    <div class="top-signin-bar">
+      <div>
+        <div class="signin-label">Sign In</div>
+        <div class="signin-action">Connect Your Account ↗</div>
+      </div>
+    </div>
+    <h1 class="page-title">Perks</h1>
+    <div class="products-grid">
+      <div class="product-card">
+        <img class="product-image" src="" alt="">
+        <div class="product-body">
+          <h3 class="product-name">Queue Priority</h3>
+          <div class="product-price">£14.99</div>
+          <button class="btn-purchase" data-link="https://paypal.me/haydentaylor129">+ Purchase</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUSTOM PEDS PAGE -->
+  <div class="hidden-page" id="page-peds">
+    <div class="top-signin-bar">
+      <div>
+        <div class="signin-label">Sign In</div>
+        <div class="signin-action">Connect Your Account ↗</div>
+      </div>
+    </div>
+    <h1 class="page-title">Custom Peds</h1>
+    <div class="products-grid"></div>
+  </div>
+
+  <!-- MISC PAGE -->
+  <div class="hidden-page" id="page-misc">
+    <div class="top-signin-bar">
+      <div>
+        <div class="signin-label">Sign In</div>
+        <div class="signin-action">Connect Your Account ↗</div>
+      </div>
+    </div>
+    <h1 class="page-title">Miscellaneous</h1>
+    <div class="products-grid"></div>
   </div>
 
   <!-- SIGN IN PAGE -->
   <div class="hidden-page" id="page-signin">
-    <div class="top-bar">
-      <div class="signin-box">
-        <div>
-          <div class="signin-label">SIGN IN</div>
-          <div class="signin-action">Connect Your Account</div>
-        </div>
+    <div class="top-signin-bar">
+      <div>
+        <div class="signin-label">Sign In</div>
+        <div class="signin-action">Connect Your Account ↗</div>
       </div>
-      <button class="cart-button">🛒 EMPTY</button>
     </div>
-
     <div class="signin-container">
       <div class="signin-card">
         <h2>Sign In</h2>
-        <p>Please login using your Discord account so we can identify you in game</p>
+        <p>Connect your Discord account to verify your identity and receive your purchases.</p>
         <button class="btn-discord-signin" id="discordLoginBtn">Login with Discord</button>
       </div>
     </div>
   </div>
 
-  <!-- BARS BUNDLES -->
-  <div class="hidden-page" id="page-bars">
-    <div class="top-bar">
-      <div class="signin-box">
-        <div>
-          <div class="signin-label">SIGN IN</div>
-          <div class="signin-action" style="cursor:pointer;">Connect Your Account ↗</div>
-        </div>
-      </div>
-      <button class="cart-button">🛒 EMPTY</button>
-    </div>
-
-    <h2 class="category-heading">Bars Bundles</h2>
-    <p style="color:var(--text-muted); margin-bottom:18px;">Purchase Bars to unlock the most exclusive in-game items!</p>
-    <div class="bars-list" id="barsList"></div>
-  </div>
-
-  <!-- PERKS -->
-  <div class="hidden-page" id="page-perks">
-    <div class="top-bar">
-      <div class="signin-box">
-        <div>
-          <div class="signin-label">SIGN IN</div>
-          <div class="signin-action" style="cursor:pointer;">Connect Your Account ↗</div>
-        </div>
-      </div>
-      <button class="cart-button">🛒 EMPTY</button>
-    </div>
-    <h2 class="category-heading">Perks</h2>
-    <div class="products-grid" id="perksGrid"></div>
-  </div>
-
-  <!-- CUSTOM PEDS -->
-  <div class="hidden-page" id="page-peds">
-    <div class="top-bar">
-      <div class="signin-box">
-        <div>
-          <div class="signin-label">SIGN IN</div>
-          <div class="signin-action" style="cursor:pointer;">Connect Your Account ↗</div>
-        </div>
-      </div>
-      <button class="cart-button">🛒 EMPTY</button>
-    </div>
-    <h2 class="category-heading">Custom Peds</h2>
-    <div class="products-grid" id="pedsGrid"></div>
-  </div>
-
-  <!-- MISCELLANEOUS -->
-  <div class="hidden-page" id="page-misc">
-    <div class="top-bar">
-      <div class="signin-box">
-        <div>
-          <div class="signin-label">SIGN IN</div>
-          <div class="signin-action" style="cursor:pointer;">Connect Your Account ↗</div>
-        </div>
-      </div>
-      <button class="cart-button">🛒 EMPTY</button>
-    </div>
-    <h2 class="category-heading">Miscellaneous</h2>
-    <div class="products-grid" id="miscGrid"></div>
-  </div>
-
   <!-- TERMS -->
   <div class="hidden-page" id="page-terms">
-    <h2 class="category-heading">Terms & Conditions</h2>
+    <h1 class="page-title">Terms & Conditions</h1>
     <div class="legal-content">
-      <h2>Tebex Terms & Conditions</h2>
-      <p>This page, together with our Privacy Policy and General Website Terms & Conditions, tells you information about us and informs you of the legal terms and conditions (the "Terms") which govern your use of our webstore (the "Webstore").</p>
-      <p>These Terms will apply to any contract between you and Us in respect of your purchase of video game related products, items and other content ("Products") on the Webstore.</p>
-      <p>Please read these Terms carefully and make sure that you understand them before ordering from the Webstore. Please note that before placing an order you will be asked to agree to these Terms. If you refuse to accept these Terms, you will not be able to place an order.</p>
-      <p>These Terms were most recently updated on 12th June 2023.</p>
-      <p><strong>All payments are final and non-refundable.</strong> Attempting a chargeback or opening a PayPal dispute will result in permanent and irreversible banishment from all of our servers, and other stores.</p>
-      <p>You shall not resell, distribute, or share purchased digital items. All purchases are for personal, non-commercial use only.</p>
+      <p><strong>All payments are final and non-refundable.</strong></p>
+      <p>Attempting a chargeback or opening a dispute will result in permanent ban from all our servers.</p>
       <p>We are not affiliated with Rockstar Games, Rockstar North or Take Two Interactive.</p>
     </div>
   </div>
 
   <!-- PRIVACY -->
   <div class="hidden-page" id="page-privacy">
-    <h2 class="category-heading">Privacy Policy</h2>
+    <h1 class="page-title">Privacy Policy</h1>
     <div class="legal-content">
-      <h2>Privacy Policy</h2>
-      <p>All information that is required on this website is not shared with any other third parties and is stored securely. All payments are processed via SSL enabled gateways and ensure that your payment details are secure.</p>
-      <p>We only use your personal information in accordance with applicable data protection law. For full details, please refer to the Tebex Privacy Policy.</p>
+      <p>All information is stored securely and not shared with third parties. Payments processed via secure gateways.</p>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <div class="page-footer">
-    <p>© 2026 Union Estate RP. Powered by Tebex. We are not affiliated with Rockstar Games, Rockstar North or Take Two Interactive.</p>
-    <div>
-      <a href="#terms" data-page="terms">Terms & Conditions</a>
-      <a href="#privacy" data-page="privacy">Privacy Policy</a>
-      <a href="https://discord.gg/2B2sMSwJqy" target="_blank">Discord</a>
-      <a href="http://www.youtube.com/@unionestaterp" target="_blank">YouTube</a>
-    </div>
-  </div>
 </main>
 
-<!-- ———— CONFIRMATION MODAL ———— -->
-<div class="modal-overlay" id="purchaseModal">
-  <div class="modal-box">
-    <h3>Do you wish to continue?</h3>
-    <p>When you pay on PayPal please state clearly what you are purchasing and why you are purchasing it. After completing your payment, please open a payment support ticket on our Discord and attach a screenshot of your payment confirmation so we can authorise your purchase.</p>
-    <div class="modal-buttons">
-      <button class="modal-btn-no" id="modalCancel">No</button>
-      <a href="#" id="modalProceed" class="modal-btn-yes">Yes</a>
-    </div>
-  </div>
-</div>
-
 <script>
-// ==================================================
-// YOUR PRODUCTS — EDIT HERE
-// ==================================================
-const PRODUCTS = {
-  bars: [
-    { name: "[150] Bars Bundle", price: 17.99, paypal: "https://paypal.me/haydentaylor129" },
-    { name: "[200] Bars Bundle", price: 23.99, paypal: "https://paypal.me/haydentaylor129" },
-    { name: "[350] Bars Bundle", price: 41.99, paypal: "https://paypal.me/haydentaylor129" },
-    { name: "[400] Bars Bundle", price: 47.99, paypal: "https://paypal.me/haydentaylor129" },
-    { name: "[500] Bars Bundle", price: 59.99, paypal: "https://paypal.me/haydentaylor129" },
-    { name: "[750] Bars Bundle", price: 89.99, paypal: "https://paypal.me/haydentaylor129" },
-    { name: "[1000] Bars Bundle", price: 119.99, paypal: "https://paypal.me/haydentaylor129" },
-    { name: "[1500] Bars Bundle", price: 179.99, paypal: "https://paypal.me/haydentaylor129" },
-    { name: "[2000] Bars Bundle", price: 239.99, paypal: "https://paypal.me/haydentaylor129" },
-    { name: "[3500] Bars Bundle", price: 419.99, paypal: "https://paypal.me/haydentaylor129" }
-  ],
-  perks: [
-    { name: "Queue Priority", price: 17.99, image: "https://via.placeholder.com/240x160/25273f/00bfff?text=Queue+Priority", paypal: "https://paypal.me/haydentaylor129" },
-    { name: "VIP Supporter", price: 14.99, image: "https://via.placeholder.com/240x160/ffd700/000?text=VIP", paypal: "https://paypal.me/haydentaylor129" }
-  ],
-  peds: [
-    { name: "Peds Pass Ultimate", price: 23.99, oldPrice: 29.99, image: "https://via.placeholder.com/240x160/9333ea/fff?text=Peds+Ultimate", paypal: "https://paypal.me/haydentaylor129" }
-  ],
-  misc: [
-    { name: "Character Slot #1", price: 17.99, image: "https://via.placeholder.com/240x160/25273f/00bfff?text=Slot+1", paypal: "https://paypal.me/haydentaylor129" },
-    { name: "Character Slot #2", price: 29.99, image: "https://via.placeholder.com/240x160/25273f/00bfff?text=Slot+2", paypal: "https://paypal.me/haydentaylor129" },
-    { name: "Character Slot Bundle", price: 41.99, image: "https://via.placeholder.com/240x160/25273f/00bfff?text=Slot+Bundle", paypal: "https://paypal.me/haydentaylor129" },
-    { name: "Organisation Seat Credit", price: 18.00, image: "https://via.placeholder.com/240x160/2563eb/fff?text=Org+Seat", paypal: "https://paypal.me/haydentaylor129" },
-    { name: "Trust Credit", price: 14.40, image: "https://via.placeholder.com/240x160/f59e0b/fff?text=Trust+Credit", paypal: "https://paypal.me/haydentaylor129" }
-  ]
-};
-
-// ==================================================
-// RENDER FUNCTIONS
-// ==================================================
-function renderBars() {
-  const container = document.getElementById('barsList');
-  container.innerHTML = PRODUCTS.bars.map(item => `
-    <div class="bars-item">
-      <span class="bars-name">${item.name}</span>
-      <div style="display:flex;align-items:center;gap:16px;">
-        <span class="bars-price">$${item.price.toFixed(2)}</span>
-        <button class="btn-purchase" data-paypal="${item.paypal}">Purchase</button>
-      </div>
-    </div>
-  `).join('');
-}
-
-function renderGrid(containerId, items) {
-  const container = document.getElementById(containerId);
-  container.innerHTML = items.map(item => `
-    <div class="product-card">
-      <img src="${item.image}" alt="${item.name}" class="product-image">
-      <div class="product-body">
-        <h3 class="product-name">${item.name}</h3>
-        <div class="product-price">
-          $${item.price.toFixed(2)}
-          ${item.oldPrice ? `<strike>$${item.oldPrice.toFixed(2)}</strike>` : ''}
-        </div>
-        <button class="btn-purchase" data-paypal="${item.paypal}">Purchase</button>
-      </div>
-    </div>
-  `).join('');
-}
-
-// Initial render
-renderBars();
-renderGrid('perksGrid', PRODUCTS.perks);
-renderGrid('pedsGrid', PRODUCTS.peds);
-renderGrid('miscGrid', PRODUCTS.misc);
-
 // ==================================================
 // NAVIGATION
 // ==================================================
@@ -768,49 +641,46 @@ document.querySelectorAll('[data-page]').forEach(link => {
     e.preventDefault();
     const targetPage = link.dataset.page;
 
-    // Update nav active
     document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
     document.querySelectorAll(`[data-page="${targetPage}"]`).forEach(n => {
       if(n.classList.contains('nav-link')) n.classList.add('active');
     });
 
-    // Show page
     document.querySelectorAll('.hidden-page').forEach(p => p.classList.remove('active'));
     document.getElementById(`page-${targetPage}`).classList.add('active');
   });
 });
 
-// Sign In button → goes to Discord login page
+// Sign In button
 document.getElementById('signinTrigger').addEventListener('click', () => {
   document.querySelectorAll('.hidden-page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-signin').classList.add('active');
 });
 
-// Discord Login button
+// Discord Login — NO BOT NEEDED
 document.getElementById('discordLoginBtn').addEventListener('click', () => {
-  // Replace with your actual Discord OAuth URL
-  window.location.href = "https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=code&scope=identify%20email";
+// REPLACE THIS URL — get from Discord Developer Portal → OAuth2
+  window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1552375903315824710&redirect_uri=https://hayden884.github.io/&response_type=code&scope=identify%20email";
 });
 
-// ==================================================
-// PURCHASE MODAL
-// ==================================================
-let targetPaypalUrl = '';
-
-document.addEventListener('click', e => {
-  if(e.target.classList.contains('btn-purchase')) {
-    targetPaypalUrl = e.target.getAttribute('data-paypal');
-    document.getElementById('modalProceed').href = targetPaypalUrl;
-    document.getElementById('purchaseModal').classList.add('visible');
+// Show success when they return
+window.addEventListener('load', () => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.has('code')) {
+    document.getElementById('signinTrigger').innerHTML = "✅ Discord Connected!";
   }
 });
 
-document.getElementById('modalCancel').addEventListener('click', () => {
-  document.getElementById('purchaseModal').classList.remove('visible');
-});
-
-document.getElementById('modalProceed').addEventListener('click', () => {
-  document.getElementById('purchaseModal').classList.remove('visible');
+// Purchase buttons
+document.querySelectorAll('.btn-purchase').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const link = btn.getAttribute('data-link');
+    if(link && link !== 'https://paypal.me/haydentaylor129') {
+      window.open(link, '_blank');
+    } else {
+      alert("Please set your PayPal link in the code!");
+    }
+  });
 });
 </script>
 </body>
