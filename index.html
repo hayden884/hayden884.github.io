@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Union Estate Store</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    
+    :root {
+      --bg: #0f1115;
+      --card: #1a1d23;
+      --card-hover: #22262e;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --text: #f0f0f0;
+      --muted: #9ca3af;
+      --green: #10b981;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      background: rgba(0,0,0,0.4);
+      border-bottom: 1px solid #2a2d34;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      margin-left: 2rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--text);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem 3rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      background: var(--card-hover);
+      border-color: var(--accent);
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      background: #2a2d34;
+    }
+
+    .product-content {
+      padding: 1.5rem;
+    }
+
+    .product-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .product-price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .buy-btn {
+      background: var(--accent);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    .buy-btn:hover {
+      background: var(--accent-hover);
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(37, 99, 235, 0.15);
+      color: #93c5fd;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.8rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      border-top: 1px solid #2a2d34;
+      font-size: 0.9rem;
+    }
+
+    .category-tabs {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .category-tab {
+      padding: 0.6rem 1.2rem;
+      background: var(--card);
+      border: none;
+      color: var(--muted);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .category-tab:hover, .category-tab.active {
+      background: var(--accent);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">🚀 YOUR STORE</div>
+    <div class="nav-links">
+      <a href="#" class="active">Store</a>
+      <a href="https://discord.gg/2B2sMSwJqy" target="_blank">Discord</a>
+      <a href="https://hayden884.github.io">Main Site</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Enhance Your Roleplay</h1>
+    <p>Premium vehicles, scripts & packages — instant delivery after purchase</p>
+  </section>
+
+  <div class="container">
+    <!-- Category Tabs (optional) -->
+    <div class="category-tabs">
+      <button class="category-tab active" data-category="all">All Products</button>
+      <button class="category-tab" data-category="vehicles">Vehicles</button>
+      <button class="category-tab" data-category="scripts">Scripts</button>
+      <button class="category-tab" data-category="packages">Packages</button>
+    </div>
+
+    <!-- ✅ EDIT YOUR PRODUCTS HERE — THIS IS ALL YOU NEED TO CHANGE ✅ -->
+    <div class="products-grid" id="productsContainer"></div>
+  </div>
+
+  <footer>
+    <p>© 2026 Your Store — Not affiliated with FivePD, Cfx.re or Rockstar Games</p>
+  </footer>
+
+<script>
+// ==================================================
+// 🛍️ YOUR PRODUCT LIST — EDIT THIS SECTION ONLY
+// ==================================================
+const products = [
+  {
+    id: 1,
+    name: "LEO Classic Pack",
+    description: "Exclusive fleet vehicles + priority join queue",
+    price: 20.00,
+    image: "https://via.placeholder.com/400x240/1a1d23/ffffff?text=🚗+Vehicle+Pack",
+    category: "packages",
+    link: "https://paypal.me/haydentaylor129"
+  },
+  {
+    id: 2,
+    name: "LEO Enforcer Pack",
+    description: "High-quality LEO vehicle with custom liveries",
+    price: 20.00,
+    image: "https://via.placeholder.com/400x240/2563eb/ffffff?text=🚓+Police+Car",
+    category: "vehicles",
+    link: "https://paypal.me/haydentaylor129"
+  },
+  {
+    id: 3,
+    name: "LEO Intercept Unit Pack",
+    description: "Custom QBox job script with UI & rewards",
+    price: 20.00,
+    image: "https://via.placeholder.com/400x240/10b981/ffffff?text=⚙️+Job+Script",
+    category: "scripts",
+    link: "https://paypal.me/haydentaylor129"
+  },
+  {
+    id: 4,
+    name: "Car Radio",
+    description: "Discord role + in-game perks & monthly rewards",
+    price: 30.00,
+    image: "https://via.placeholder.com/400x240/f59e0b/ffffff?text=⭐+VIP",
+    category: "packages",
+    link: "https://paypal.me/haydentaylor129"
+  }
+  // ↓ ADD MORE PRODUCTS BY COPYING THE BLOCK ABOVE ↓
+  // , {
+  //   id: 5,
+  //   name: "Your Product Name",
+  //   description: "Short description",
+  //   price: 12.00,
+  //   image: "https://i.imgur.com/YOUR_IMAGE.jpg",
+  //   category: "vehicles",
+  //   link: "https://buy-link-here"
+  // }
+];
+
+// ==================================================
+// ⚠️ DON'T EDIT ANYTHING BELOW THIS LINE
+// ==================================================
+function renderProducts(category = 'all') {
+  const container = document.getElementById('productsContainer');
+  const filtered = category === 'all'
+    ? products
+    : products.filter(p => p.category === category);
+
+  container.innerHTML = filtered.map(product => `
+    <div class="product-card" data-category="${product.category}">
+      <img src="${product.image}" alt="${product.name}" class="product-image">
+      <div class="product-content">
+        <span class="tag">${product.category.charAt(0).toUpperCase() + product.category.slice(1)}</span>
+        <h3 class="product-title">${product.name}</h3>
+        <p class="product-desc">${product.description}</p>
+        <div class="product-footer">
+          <span class="product-price">£${product.price.toFixed(2)}</span>
+          <a href="${product.link}" target="_blank" class="buy-btn">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Initial render
+renderProducts();
+
+// Category tabs
+document.querySelectorAll('.category-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    renderProducts(tab.dataset.category);
+  });
+});
+</script>
+</body>
+</html>
